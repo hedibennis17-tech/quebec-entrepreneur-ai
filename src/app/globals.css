@@ -1,26 +1,111 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  /* Palette Québec */
+  --qc-blue: #003DA5;
+  --qc-blue-dark: #002B75;
+  --qc-blue-light: #1a56cc;
+  --qc-gold: #C9A84C;
+  --qc-gold-light: #e8c96b;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Neutres */
+  --qc-off-white: #F8F9FB;
+  --qc-slate-900: #0f172a;
+  --qc-slate-700: #334155;
+  --qc-slate-500: #64748b;
+  --qc-slate-300: #cbd5e1;
+  --border: #e2e8f0;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: var(--qc-off-white);
+  --foreground: var(--qc-slate-900);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Gradients */
+.gradient-qc {
+  background: linear-gradient(135deg, var(--qc-blue-dark) 0%, var(--qc-blue) 60%, var(--qc-blue-light) 100%);
+}
+.gradient-qc-gold {
+  background: linear-gradient(135deg, var(--qc-gold) 0%, var(--qc-gold-light) 100%);
+}
+
+/* Composants */
+.btn-primary {
+  background: var(--qc-blue);
+  color: white;
+  padding: 0.875rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  display: inline-block;
+  text-decoration: none;
+}
+.btn-primary:hover {
+  background: var(--qc-blue-dark);
+  transform: translateY(-1px);
+}
+
+.btn-gold {
+  background: var(--qc-gold);
+  color: var(--qc-blue-dark);
+  padding: 0.875rem 2rem;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.card-premium {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.card-premium:hover {
+  box-shadow: 0 8px 25px rgba(0, 61, 165, 0.12);
+  transform: translateY(-2px);
+}
+
+.module-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  font-weight: 800;
+  font-size: 0.875rem;
+}
+
+.progress-bar {
+  background: var(--border);
+  border-radius: 999px;
+  height: 8px;
+  overflow: hidden;
+}
+.progress-fill {
+  background: linear-gradient(90deg, var(--qc-blue), var(--qc-gold));
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+.qc-accent-line::before {
+  content: "⚜ ";
+  color: var(--qc-gold);
 }
